@@ -1,7 +1,6 @@
 
-module.exports = function (server) {
-  server.on('request', function (request, response) {
-    console.log("New request")
-  }); // Emitted each time there is a request.
-
+export default function(){
+  process.on('unhandledRejection', (reason, promise) => {
+    console.log('Unhandled Rejection at:', reason.stack || reason)
+  })
 }
