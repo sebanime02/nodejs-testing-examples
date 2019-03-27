@@ -8,4 +8,4 @@ const convertPromiseToAsyncAwaitHandable = function(promise) {
 }
 
 
-module.exports = {convertPromiseToAsyncAwaitHandable}
+module.exports = {  convertPromiseToAsyncAwaitHandable : convertPromiseToAsyncAwaitHandable}

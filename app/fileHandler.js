@@ -23,10 +23,15 @@ const createFolder = function(filePath){
 
 const changeFilePermissions = function(filePath,fileMode){
   return new Promise(function(resolve,reject){
-    fs.chmod(path.dirname(filePath),fileMode,function(err){
-      if(err) reject(new Error(err))
-      resolve(filePath)
-    })
+    try{
+      fs.chmod(path.dirname(filePath),fileMode,function(err){
+        if(err) reject(new Error(err))
+        resolve(filePath)
+      })
+    }catch(e){
+      reject(new Error(err))
+    }
+    
   })
 }
 
