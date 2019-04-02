@@ -1,14 +1,12 @@
 
+const fetch = require('node-fetch')
 
-const INDEX_ROUTE = "https://jsonplaceholder.typicode.com/todos/"
+const INDEX_ROUTE = "https://jsonplaceholder.typicode.com/posts/"
 
 
 const getAll = function(){
-  return new Promise((resolve,reject) => {
-    fetch(INDEX_ROUTE).then((res) => resolve (res),(err) => reject(err))
-})
-
-}
+    fetch(INDEX_ROUTE)
+  }
 
 
 export {getAll}
