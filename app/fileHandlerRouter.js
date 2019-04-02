@@ -38,30 +38,26 @@ router.get('/create/promises', function (req, res) {
   })
 })
 
-// function convertPromiseToAsyncAwaitHandable(promise) {
-//   return promise.then(data => {
-//      return [null, data];
-//   })
-//   .catch(err =>  {
-//     return [err,null]
-//   })
-// }
 
 router.get('/create/await', async function (req, res){
   const object = {name: "sebas", lastname: "benavides"}
+  
   let data = JSON.stringify(object)
 
-  let successfullFilePath = await createFolder('../files/file.json').catch(error => {
-    throw 'Error creating folder, backtrace: '+error
-  })
-  let result = await createFile(successfullFilePath,data).catch(error => {
-    throw 'Error creating file, backtrace: '+error
-  })
-  // if(typeof result !== 'undefined'){
-  //   console.log(result)
-  //   res.redirect('/')
-  // 
-
+  try{
+    let successfullFilePath = await createFolder('../files/file.json').catch(error => {
+      throw 'Error creating folder, backtrace: '+error
+    })
+    let result = await createFile(successfullFilePath,data).catch(error => {
+      throw 'Error creating file, backtrace: '+error
+    })
+  
+    console.log(JSON.stringify(result))
+    res.redirect('/')  
+  }catch(e){
+    console.log(e)
+  }
+ 
 })
 
 
